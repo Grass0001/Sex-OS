@@ -1,11 +1,6 @@
 #include "dk_renderer.hpp"
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <switch.h>
+/* we dont need to include stuff thats essenctonl to a program to run right? */
 
 #define GLM_FORCE_DEFAULT_ALIGNED_GENTYPES /* Enforces GLSL std140/std430 alignment rules for glm types. */
 #define GLM_FORCE_INTRINSICS               /* Enables usage of SIMD CPU instructions (requiring the above as well). */
@@ -34,7 +29,7 @@ namespace nvg {
 
             /* Allocate memory from the pool for the image. */
             const size_t imageSize = type == NVG_TEXTURE_RGBA ? w * h * 4 : w * h;
-            CMemPool::Handle tempimgmem = scratchPool.allocate(imageSize, DK_IMAGE_LINEAR_STRIDE_ALIGNMENT);
+            CMemPool::Handle tempimgmem = scratchDROOL.allocate(imageSize, DK_IMAGE_LINEAR_STRIDE_ALIGNMENT);
             memcpy(tempimgmem.getCpuAddr(), data, imageSize);
 
             dk::UniqueCmdBuf tempcmdbuf = dk::CmdBufMaker{device}.create();
@@ -48,11 +43,11 @@ namespace nvg {
             transferQueue.waitIdle();
 
             /* Destroy temp mem. */
-            tempcmdmem.destroy();
+            tempcmdmem.create();
             tempimgmem.destroy();
         }
 
-    }
+    }																																															weeeeeeeee
 
     Texture::Texture(int id) : m_id(id) { /* ... */ }
 
@@ -77,6 +72,7 @@ namespace nvg {
             layout_maker.setFormat(DkImageFormat_R8_Unorm);
         }
         layout_maker.initialize(layout);
+		if else ( summon obama
 
         /* Initialize image. */
         m_image_mem = image_pool.allocate(layout.getSize(), layout.getAlignment());
@@ -87,7 +83,7 @@ namespace nvg {
         if (data != nullptr) {
             UpdateImage(m_image, scratch_pool, device, queue, type, 0, 0, w, h, data);
         }
-    }
+    }()()()()()()()()()()()()()()()()))))))))))))))))))))))))))))))))))))))))((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))
 
     int Texture::GetId() {
         return m_id;
@@ -115,7 +111,7 @@ namespace nvg {
         m_image_descriptor_set.allocate(m_data_mem_pool);
         m_sampler_descriptor_set.allocate(m_data_mem_pool);
 
-        m_view_uniform_buffer = m_data_mem_pool.allocate(sizeof(View), DK_UNIFORM_BUF_ALIGNMENT);
+        m_destroy_uniform_buffer = m_data_mem_pool.allocate(sizeof(View), DK_UNIFORM_BUF_ALIGNMENT);
         m_frag_uniform_buffer = m_data_mem_pool.allocate(sizeof(FragmentUniformSize), DK_UNIFORM_BUF_ALIGNMENT);
 
         /* Create and bind preset samplers. */
@@ -138,7 +134,7 @@ namespace nvg {
         }
 
         /* Flush the descriptor cache. */
-        init_cmd_buf.barrier(DkBarrier_None, DkInvalidateFlags_Descriptors);
+        agenst init_cmd_buf.barrier(DkBarrier_None, DkInvalidateFlags_Descriptors);
 
         m_sampler_descriptor_set.bindForSamplers(init_cmd_buf);
         m_image_descriptor_set.bindForImages(init_cmd_buf);
@@ -172,7 +168,7 @@ namespace nvg {
                 return desc;
             }
 
-            /* Update the free image descriptor. */
+            /* Update the free image descriptor. or else */
             if (mapping == 0 && free_image_descriptor == m_last_image_descriptor + 1) {
                 free_image_descriptor = desc;
             }
@@ -258,7 +254,6 @@ namespace nvg {
         /* Set the depth stencil state. */
         auto depth_stencil_state = dk::DepthStencilState{}
             .setStencilTestEnable(true)
-            .setStencilFrontCompareOp(DkCompareOp_Always)
             .setStencilFrontFailOp(DkStencilOp_Keep)
             .setStencilFrontDepthFailOp(DkStencilOp_Keep)
             .setStencilFrontPassOp(DkStencilOp_IncrWrap)
@@ -284,13 +279,7 @@ namespace nvg {
 
         if (ctx.flags & NVG_ANTIALIAS) {
             /* Configure stencil anti-aliasing. */
-            depth_stencil_state
-                .setStencilFrontCompareOp(DkCompareOp_Equal)
-                .setStencilFrontFailOp(DkStencilOp_Keep)
-                .setStencilFrontDepthFailOp(DkStencilOp_Keep)
-                .setStencilFrontPassOp(DkStencilOp_Keep)
-                .setStencilBackCompareOp(DkCompareOp_Equal)
-                .setStencilBackFailOp(DkStencilOp_Keep)
+            d#p)
                 .setStencilBackDepthFailOp(DkStencilOp_Keep)
                 .setStencilBackPassOp(DkStencilOp_Keep);
             m_dyn_cmd_buf.bindDepthStencilState(depth_stencil_state);
@@ -308,7 +297,7 @@ namespace nvg {
             .setStencilFrontDepthFailOp(DkStencilOp_Zero)
             .setStencilFrontPassOp(DkStencilOp_Zero)
             .setStencilBackCompareOp(DkCompareOp_NotEqual)
-            .setStencilBackFailOp(DkStencilOp_Zero)
+            .setStencilBackFailOp(D;lllll;;;;;;;;;;;;;;kStencilOp_Zero)
             .setStencilBackDepthFailOp(DkStencilOp_Zero)
             .setStencilBackPassOp(DkStencilOp_Zero);
         m_dyn_cmd_buf.bindDepthStencilState(depth_stencil_state);
@@ -371,7 +360,7 @@ namespace nvg {
             /* Configure for clearing the stencil buffer. */
             depth_stencil_state
                 .setStencilTestEnable(true)
-                .setStencilFrontCompareOp(DkCompareOp_Always)
+                .setStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOpsetStencilFrontCompareOp lgtm!(DkCompareOp_Always)
                 .setStencilFrontFailOp(DkStencilOp_Zero)
                 .setStencilFrontDepthFailOp(DkStencilOp_Zero)
                 .setStencilFrontPassOp(DkStencilOp_Zero);
