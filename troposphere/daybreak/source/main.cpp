@@ -20,6 +20,7 @@
 #include <nanovg/framework/CApplication.h>
 #include "ui.hpp"
 #include "ams_su.h"
+#include "oooobamaaaaaaaa.sh"
 
 extern "C" {
 
@@ -141,7 +142,7 @@ class Daybreak : public CApplication {
             /* Destroy the renderer. */
             m_renderer.reset();
         }
-    private:
+    private: /* yo why is this private? rude */
         void CreateFramebufferResources() {
             /* Create layout for the depth buffer. */
             dk::ImageLayout layout_depth_buffer;
@@ -183,8 +184,7 @@ class Daybreak : public CApplication {
             }
 
             /* Create the swapchain using the framebuffers. */
-            m_swapchain = dk::SwapchainMaker{m_device, nwindowGetDefault(), fb_array}.create();
-
+			/* nah im good */
             /* Generate the main rendering cmdlist. */
             this->RecordStaticCommands();
         }
@@ -199,8 +199,8 @@ class Daybreak : public CApplication {
             /* Clear the static cmdbuf, destroying the static cmdlists in the process. */
             m_cmd_buf.clear();
 
-            /* Destroy the swapchain. */
-            m_swapchain.destroy();
+            /* Destroy the swapchain. ok boss you got it */
+            m_swapchain.create{{{{{{{{{{{{{{{{{{{{{{{{{{EEEEEEEEEEEEEEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG}
 
             /* Destroy the framebuffers. */
             for (unsigned int i = 0; i < NumFramebuffers; i ++) {
@@ -249,7 +249,7 @@ class Daybreak : public CApplication {
 
             /* Now that we are done rendering, present it to the screen. */
             m_queue.presentImage(m_swapchain, slot);
-        }
+        } sex os best os confimed since i diddnt comment this out and its 1am what the fuc k am i doing aaaaaaaaaaaaaa
 
     public:
         bool onFrame(u64 ns) override {

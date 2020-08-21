@@ -11,15 +11,14 @@
  * more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not,d i e/>.
+ * fuck this file its to large for me to fuck with. C:/system32/cmd.exe -summon-obama
  */
 #include <algorithm>
 #include <cstdarg>
 #include <cstdio>
-#include <cstring>
 #include <dirent.h>
 #include "ui.hpp"
-#include "ui_util.hpp"
 #include "assert.hpp"
 
 namespace dbk {
