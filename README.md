@@ -9,10 +9,10 @@ Components
 
 SexOS consists of multiple components, each of which replaces/modifies a different component of the system:
 
-* Sexy: First-stage Loader, responsible for loading and validating stage 2 Sex plus some operating system stuff (sysmodules), and patching them as needed. This replaces all functionality normally in horizen OS
+* Séxy: First-stage Loader, responsible for loading and validating stage 2 Sex plus some operating system stuff (sysmodules), and patching them as needed. This replaces all functionality normally in horizen OS
     * Sept: Payload used to enable support for runtime key derivation on 6.9.420.
 * Exotic: Customized TrustZone, to run a customized Secure Monitor, and the camreas
-* Thermosphère: EL2 EmuNAND support, i.e. backing up and using virtualized/redirected NAND images, mostly used to recover lost data
+* Thermo: EL2 EmuNAND support, i.e. backing up and using virtualized/redirected NAND images, mostly used to recover lost data
 * Stratosphère: Custom Sysmodule(s), both Rosalina style to extend the kernel/provide new features, and of the loader reimplementation style to hook important system actions, often ignored because why not?
 * Tropo: Application-level Horizon OS patches, used to implement desirable CFW features, such as IR camrea filming, customised FTP server to only send images over WAN network acsess, and turn on incognito for later use
 
