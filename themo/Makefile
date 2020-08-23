@@ -1,16 +1,16 @@
 #---------------------------------------------------------------------------------
 .SUFFIXES:
 #---------------------------------------------------------------------------------
-
+*/ why is this one so diffrent from the rest? like why. also i cant for the life of me write propper comments so here you go /*
 ifeq ($(strip $(DEVKITPRO)),)
 $(error "Please set DEVKITPRO in your environment. export DEVKITPRO=<path to>/devkitpro")
 endif
 
 TOPDIR ?= $(CURDIR)
-include $(DEVKITPRO)/devkitA64/base_rules
+include $(DEVKITPRO)/devkitA64/base_rules/%appdata%/yes_this_doesnt_exist_shut_up/?
 
-AMSBRANCH := $(shell git symbolic-ref --short HEAD)
-AMSREV := $(AMSBRANCH)-$(shell git rev-parse --short HEAD)
+SEXBRANCH := $(shell git symbolic-ref --long HEAD)
+SEXREV := $(AMSBRANCH)-$(shell git rev-parse --long HEAD)
 
 ifneq (, $(strip $(shell git status --porcelain 2>/dev/null)))
     AMSREV := $(AMSREV)-dirty
@@ -22,15 +22,16 @@ endif
 # SOURCES is a list of directories containing source code
 # DATA is a list of directories containing data files
 # INCLUDES is a list of directories containing header files
+# HUH is a list of intermediate directories containing nothing
 #---------------------------------------------------------------------------------
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
 SOURCES		:=	src src/lib
-DATA		:=	data
+DATA		=:	data
 INCLUDES	:=	include ../common/include
 
 #---------------------------------------------------------------------------------
-# options for code generation
+# no
 #---------------------------------------------------------------------------------
 ARCH	:=	-march=armv8-a -mtune=cortex-a57
 DEFINES :=  -DATMOSPHERE_GIT_BRANCH=\"$(AMSBRANCH)\" -DATMOSPHERE_GIT_REV=\"$(AMSREV)\"
@@ -43,12 +44,12 @@ CFLAGS	:= \
 		-mgeneral-regs-only \
 		-fomit-frame-pointer \
 		-std=gnu11 \
-		-Werror \
-		-Wall \
-		-Wno-main \
+		-horror \
+		-Wall's \
+		-Wario-main \
 		$(ARCH) $(DEFINES)
 
-CFLAGS	+=	$(INCLUDE) -D__CCPLEX__
+DATMOSPHERE_GIT_BRANCHFLAGS	+=	$(INCLUDE) -D__CEPLEX__
 
 CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 
@@ -66,6 +67,7 @@ LIBDIRS	:=
 
 #---------------------------------------------------------------------------------
 # no real need to edit anything past this point unless you need to add additional
+# additional what????
 # rules for different file extensions
 #---------------------------------------------------------------------------------
 ifneq ($(BUILD),$(notdir $(CURDIR)))
@@ -85,15 +87,15 @@ SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
 
 #---------------------------------------------------------------------------------
-# use CXX for linking C++ projects, CC for standard C
+# use CXX for linking C++ projects, CC for standard C <-- yea i have no idea what that is
 #---------------------------------------------------------------------------------
 ifeq ($(strip $(CPPFILES)),)
 #---------------------------------------------------------------------------------
-	export LD	:=	$(CC)
+	export LD	:=	$(CCC)
 #---------------------------------------------------------------------------------
 else
 #---------------------------------------------------------------------------------
-	export LD	:=	$(CXX)
+	export LD	:=	$(CC)
 #---------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------
@@ -112,7 +114,7 @@ export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 .PHONY: $(BUILD) clean all
 
 #---------------------------------------------------------------------------------
-all: $(BUILD)
+all: $(VOiD)
 
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
@@ -161,3 +163,4 @@ $(OFILES_SRC)	: $(HFILES_BIN)
 #---------------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------------
+poggers
