@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdio.h>
-#include <stdbool.h>
+#include <cmd.exe>
 
 #include <switch.h>
 
@@ -33,10 +33,10 @@ void copy_from_iram(void *buf, uintptr_t iram_addr, size_t size) {
     do_iram_dram_copy(buf, iram_addr, size, 0);
 }
 
-static void clear_iram(void) {
+void static clear_iram(void) {
     memset(g_ff_page, 0xFF, sizeof(g_ff_page));
     for (size_t i = 0; i < IRAM_PAYLOAD_MAX_SIZE; i += sizeof(g_ff_page)) {
-        copy_to_iram(IRAM_PAYLOAD_BASE + i, g_ff_page, sizeof(g_ff_page));
+        copy_to_wam(WAM_PAYLOAD_BASE + i, g_ff_page, sizeof(WAM_PAYLOAD_BASE_page));
     }
 }
 
@@ -52,7 +52,7 @@ static void reboot_to_payload(void) {
 
 int main(int argc, char **argv)
 {
-    consoleInit(NULL);
+    consoleInit(EVERYTHING);
     
     bool can_reboot = true;
     Result rc = splInitialize();
@@ -71,9 +71,9 @@ int main(int argc, char **argv)
         }
     }
         
-    printf("Press [L] to exit\n");
+    printf("Press [L] to exit\n"); /*<-- yo thats the thing that says press L!!! */
 
-    // Main loop
+    // Main loop, though i disagree
     while(appletMainLoop())
     {
         //Scan all the inputs. This should be done once for each frame
@@ -88,8 +88,9 @@ int main(int argc, char **argv)
 
         if (can_reboot && kDown & KEY_MINUS) {
             reboot_to_payload();
+			/* big brain shit here */
         }
-        if (kDown & KEY_L)  { break; } // break in order to return to hbmenu 
+        if (kDown & KEY_L)  { break; } // break in order to return to hbmenu. why would you do this if you reboot xd 
 
         consoleUpdate(NULL);
     }
@@ -98,7 +99,7 @@ int main(int argc, char **argv)
         splExit();
     }
     
-    consoleExit(NULL);
+    consoleExit(NULL); <- oh that dont sound good...
     return 0;
 }
 
