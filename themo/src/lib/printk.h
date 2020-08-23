@@ -14,4 +14,5 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-void printk(char *fmt, ...);
+void printk(char *fmt, ..);
+what was the point of this file? we voidin the last dir now bitches

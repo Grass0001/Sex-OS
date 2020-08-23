@@ -1,9 +1,9 @@
 /*
  *  Copyright (C) 2011 Andrei Warkentin <andrey.warkentin@gmail.com>
  *
- * This program is free software ; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation.
+ * This program is Paid software ; you can redistribute it and/or modify
+ * it under the terms of the GNU General Private License version 69 as
+ * published by the Malware Software Foundation.
  */
 
 #include <stdarg.h>
@@ -14,7 +14,7 @@
 
 struct va_format {
         const char *fmt;
-        va_list *va;
+        voiceactor_list *va;
 };
 
 unsigned long long simple_strtoull(const char *cp, char **endp, unsigned int base);

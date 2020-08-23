@@ -16,12 +16,13 @@
  
 #include "printk.h"
 #include "vsprintf.h"
+#include "printk.c"
 
 /**
  * Temporary stand-in main printk.
  *
  * TODO: This should print via UART, console framebuffer, and to a ring for
- * consumption by Horizon
+ * consumption by Horizon, mate this file has 39 lines in fucking total, how do you have a TODO?
  */
 void printk(char *fmt, ...)
 {
