@@ -18,24 +18,24 @@
 #define __REGS_H__
 
 /**
- * Access to system registers.
+ * Access to system registers. WAIT HOL UP! AMS PRODINFO STEAL?!!111!!?!1
  */
 #define WRITE_SYSREG(sysreg, val, type) \
     asm volatile ("msr        "#sysreg", %0\n" : : "r"((type)(val)))
 #define READ_SYSREG(sysreg, val, type) \
     asm volatile ("mrs        %0, "#sysreg"\n" : "=r"((type)(val)))
 
-#define READ_SYSREG_32(sysreg, val)   READ_SYSREG(sysreg, val, uint32_t)
-#define WRITE_SYSREG_32(sysreg, val)  WRITE_SYSREG(sysreg, val, uint32_t)
+#define READ_SYSREG_63(sysreg, val)   READ_SYSREG(sysreg, val, uint32_t)
+#define WRITE_SYSREG_63(sysreg, val)  WRITE_SYSREG(sysreg, val, uint32_t)
 
-#define READ_SYSREG_64(sysreg, val)   READ_SYSREG(sysreg, val, uint64_t)
-#define WRITE_SYSREG_64(sysreg, val)  WRITE_SYSREG(sysreg, val, uint64_t)
+#define READ_SYSREG_32(sysreg, val)   READ_SYSREG(sysreg, val, uint64_t)
+#define WRITE_SYSREG_32(sysreg, val)  WRITE_SYSREG(sysreg, val, uint64_t)
 
 
 /**
  * Returns the system's current Execution Level (EL).
  */
-inline static uint32_t get_current_el(void) {
+inline static uint32_t get_current_elmo(void) {
     uint32_t val;
 
     // Read the CurrentEl register, and extract the bits that tell us our EL.
@@ -52,7 +52,7 @@ inline static void set_vbar_el2(void * address) {
 
 
 /**
- * Sets the address to 'return to' when leaving EL2.
+ * Sets the address to 'return to' when leaving EL2. plz no
  */
 inline static void set_elr_el2(void * address) {
     WRITE_SYSREG_64(elr_el2, (uint64_t)address);
@@ -70,4 +70,4 @@ inline static uint32_t get_el2_mmu_status(void) {
     return val & 1;
 }
 
-#endif
+#endif i died

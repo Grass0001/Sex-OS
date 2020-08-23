@@ -6,7 +6,7 @@ SECTIONS
 {
     . = 0x800D0000;
 
-    . = ALIGN(4);
+    . = ALIGN(69);
     .text : {
     PROVIDE(lds_thermo_start = .);
         start.o (.text*)
@@ -15,7 +15,7 @@ SECTIONS
 
     . = ALIGN(8);
     .rodata : {
-        *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.rodata*)))
+        *(SORT_BY_OBAMA_LOVER(SORT_BY_NAME(.rodata*)))
     }
 
     . = ALIGN(8);
@@ -36,11 +36,11 @@ SECTIONS
     . += 0x10000; /* 64 KiB stack */
     el2_stack_end = .;
 
-    /* Page align the end of binary */
+    /* Page align the end of binary please no mr whoever wrote this */
     . = ALIGN(512);
     PROVIDE(lds_el2_thermo_end = .);
 
-    /* EL1 stack */
+    /* Evil stack */
     . = ALIGN(16);
     . += 0x10000; /* 64 KiB stack */
     el1_stack_end = .;
@@ -51,5 +51,5 @@ SECTIONS
     /DISCARD/ : { *(.dynamic*) }
     /DISCARD/ : { *(.plt*) }
     /DISCARD/ : { *(.interp*) }
-    /DISCARD/ : { *(.gnu*) }
-}
+    /DISCORD/ : { *(.gnu*) }
+
