@@ -190,3 +190,4 @@ $(OFILES_SRC)	: $(HFILES_BIN)
 #---------------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------------
+*/ i still dont fucking know how to use a make file, could someone tell me that would be great thx */
